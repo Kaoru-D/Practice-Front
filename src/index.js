@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 
 import './index.css';
 
@@ -9,25 +8,12 @@ import Book from './Book';
 const BookList = () => {
   return (
     <section className="booklist">
-      {books.map((book) => {
-        return <Book book={...book} {...book.id} />;
+      {books.map((book, index) => {
+        return <Book {...book} key={book.id} number={index}/>;
       })}
     </section>
   );
 };
-
-const Book = (props) => {
-  const { img, title, author } = props.book;
-  console.log(props);
-  return (
-    <article className="book">
-      <img src={img} alt={title} />
-      <h1>{title}</h1>
-      <h4>{author}</h4>
-    </article>
-  );
-};
-
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
